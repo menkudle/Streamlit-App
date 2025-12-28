@@ -1,0 +1,17 @@
+[theme]
+base = "dark"
+
+## The primary color for buttons, sliders, and focus states
+#primaryColor = "#F63366"
+#
+## The main background color of the app
+#backgroundColor = "#0E1117"
+#
+## The background color of the sidebar
+#secondaryBackgroundColor = "#262730"
+#
+## The color of the text
+#textColor = "#FAFAFA"
+
+# Font family (options: "sans serif", "serif", "monospace")
+font = "monospace"

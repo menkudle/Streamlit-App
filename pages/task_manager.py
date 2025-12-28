@@ -7,7 +7,7 @@ require_auth()
 # Initialize DB on first load
 init_db()
 
-st.title("✅ Task Manager (Persisted)")
+st.title("✅ Task Manager")
 
 # Input for new task
 new_task = st.text_input("New Task")

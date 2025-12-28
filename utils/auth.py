@@ -29,7 +29,7 @@ def require_auth():
         time.sleep(2)
 
         # Force a switch back to the main login app
-        st.switch_page("pages/dashboard.py")
+        st.switch_page("app.py")
 
         # Stop execution so the rest of the page code doesn't run
         st.stop()

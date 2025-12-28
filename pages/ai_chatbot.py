@@ -6,7 +6,7 @@ from utils.auth import require_auth
 # 1. Security Check
 require_auth()
 
-st.title("💬 Nemotron Chat")
+st.title("💬 AI Chat")
 st.caption("Running locally via Ollama with 'nemotron-mini'")
 
 # 2. Initialize Chat History
