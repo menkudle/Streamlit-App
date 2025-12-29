@@ -11,6 +11,9 @@ init_db()
 
 st.title("✅ Task Manager")
 
+if st.button("🔄 Force Refresh from DB"):
+    st.rerun()
+
 # Input for new task
 new_task = st.text_input("New Task")
 if st.button("Add Task"):

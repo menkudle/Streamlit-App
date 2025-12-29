@@ -100,7 +100,7 @@ def render_trend_section(data):
         else:
             fig = px.area(trend_data, x='Date', y='Sales', template="plotly_dark", color_discrete_sequence=chart_color)
 
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width='stretch')
 
 
 render_trend_section(filtered_df)
@@ -125,7 +125,7 @@ def render_map_section(data):
             zoom=1, height=500, mapbox_style=map_style
         )
         fig_map.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
-        st.plotly_chart(fig_map, use_container_width=True)
+        st.plotly_chart(fig_map, width='stretch')
 
     with c2:
         st.subheader("💹 Scatter Analysis")
@@ -138,7 +138,7 @@ def render_map_section(data):
             color="Category", size="Sales",
             template="plotly_dark", opacity=0.7
         )
-        st.plotly_chart(fig_scatter, use_container_width=True)
+        st.plotly_chart(fig_scatter, width='stretch')
 
 
 render_map_section(filtered_df)

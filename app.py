@@ -20,7 +20,6 @@ def login():
             st.session_state.logged_in = True
             st.success("Logged in!")
             st.rerun()
-            # st.switch_page("pages/basic_dashboard.py")
         else:
             st.error("Incorrect username or password")
 
@@ -38,7 +37,7 @@ login_page = st.Page(login, title="Log In", icon="🔐")
 # 2. Define your application pages
 dashboard = st.Page("pages/basic_dashboard.py", title="Business Overview", icon="📊")
 plotly_dash = st.Page("pages/plotly_dashboard.py", title="Detailed Analysis", icon="🤓")
-chatbot = st.Page("pages/ai_chatbot.py", title="Nemotron Assistant", icon="🤖")
+chatbot = st.Page("pages/ai_chatbot.py", title="Agentic Assistant", icon="🤖")
 tasks = st.Page("pages/task_manager.py", title="My Tasks", icon="✅")
 
 # --- NAVIGATION LOGIC ---

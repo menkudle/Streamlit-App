@@ -27,4 +27,4 @@ st.subheader("Sales vs Profit Metrics")
 st.line_chart(filtered_data)
 
 st.subheader("Raw Data View")
-st.dataframe(filtered_data, use_container_width=True)
+st.dataframe(filtered_data, width='stretch')
