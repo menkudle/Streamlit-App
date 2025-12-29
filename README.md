@@ -1,4 +1,4 @@
-# 🚀 All-In-One Streamlit Mastery App
+# 🚀 Streamlit Mastery App
 
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&logo=python&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.31%2B-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
@@ -72,7 +72,7 @@ Ensure you have Python installed. You also need **Ollama** installed for the AI 
 
 ### 2. Clone the Repository
 ```bash
-git clone [https://github.com/your-username/streamlit-app.git](https://github.com/your-username/streamlit-app.git)
+git clone https://github.com/menkudle/Streamlit-App.git
 cd streamlit-app
 ```
 
@@ -80,3 +80,40 @@ cd streamlit-app
 ```bash
 pip install streamlit pandas requests
 ```
+
+### 4. Setup Local LLM
+Pull the specific model used in the application code:
+```bash
+ollama pull nemotron-mini
+```
+Note: Keep the Ollama app running in the background.
+
+### 5. Run the Application
+```bash
+streamlit run app.py
+```
+
+## 🎨️ Customization
+You can change the UI theme by editing ```.streamlit/config.toml```:
+```bash
+[theme]
+base = "dark"
+primaryColor = "#F63366"
+backgroundColor = "#0E1117"
+```
+
+## 🔐 Default Credentials
+(For testing purposes only)
+* Username: ```admin```
+* Password: ```password```
+
+## 🚀 Future Roadmap
+* [ ] Implement user registration with password hashing.
+* [ ] Add PDF RAG (Retrieval Augmented Generation) to the AI Chat.
+* [ ] Deploy to Streamlit Community Cloud.
+
+## 🤝 Contributing
+Contributions, issues, and feature requests are welcome!
+
+## 📄 License
+This project is licensed under the MIT License.
