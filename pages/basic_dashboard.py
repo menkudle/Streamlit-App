@@ -3,6 +3,8 @@ import pandas as pd
 import numpy as np
 from utils.auth import require_auth
 
+st.set_page_config(layout="wide")
+
 require_auth()
 
 st.title("📊 Interactive Dashboard")

@@ -2,7 +2,8 @@ import streamlit as st
 from utils.auth import check_credentials
 
 # Page Configuration
-st.set_page_config(page_title="Streamlit App")
+st.set_page_config(page_title="Streamlit App", layout="wide")
+
 
 # Initialize Session State for Login
 if "logged_in" not in st.session_state:
@@ -18,8 +19,8 @@ def login():
         if check_credentials(username, password):
             st.session_state.logged_in = True
             st.success("Logged in!")
-            # st.rerun()
-            st.switch_page("pages/dashboard.py")
+            st.rerun()
+            # st.switch_page("pages/basic_dashboard.py")
         else:
             st.error("Incorrect username or password")
 
@@ -30,24 +31,32 @@ def logout():
         st.rerun()
 
 
-# --- Main App Logic ---
-if not st.session_state.logged_in:
-    login()
-else:
-    # st.sidebar.title("Navigation")
-    # logout()
-    # st.write("### Welcome back, Admin!")
-    # st.info("👈 Select a page from the sidebar to get started.")
-    pg = st.navigation([
-        st.Page("pages/dashboard.py", title="Business Overview", icon="📊"),
-        st.Page("pages/ai_chatbot.py", title="Nemotron Assistant", icon="🤖"),
-        st.Page("pages/task_manager.py", title="My Tasks", icon="✅"),
-    ])
+# --- DEFINE ALL PAGES ---
+# 1. Wrap the login function as a Page
+login_page = st.Page(login, title="Log In", icon="🔐")
 
-    # Show the sidebar logout button
+# 2. Define your application pages
+dashboard = st.Page("pages/basic_dashboard.py", title="Business Overview", icon="📊")
+plotly_dash = st.Page("pages/plotly_dashboard.py", title="Detailed Analysis", icon="🤓")
+chatbot = st.Page("pages/ai_chatbot.py", title="Nemotron Assistant", icon="🤖")
+tasks = st.Page("pages/task_manager.py", title="My Tasks", icon="✅")
+
+# --- NAVIGATION LOGIC ---
+if not st.session_state.logged_in:
+    # SHOW ONLY LOGIN PAGE
+    # position="hidden" hides the sidebar entirely on the login screen (optional)
+    pg = st.navigation([login_page], position="hidden")
+else:
+    # SHOW APP PAGES
+    pg = st.navigation({
+        "Dashboards": [dashboard, plotly_dash],
+        "Tools": [chatbot, tasks]
+    })
+
+    # Show user profile in sidebar
     with st.sidebar:
         st.write("User: Admin")
         logout()
 
-    # Run the selected page
-    pg.run()
+# Run the selected page
+pg.run()

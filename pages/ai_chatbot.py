@@ -3,6 +3,8 @@ import requests
 import json
 from utils.auth import require_auth
 
+st.set_page_config(layout="wide")
+
 # 1. Security Check
 require_auth()
 
