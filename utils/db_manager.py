@@ -32,7 +32,6 @@ def delete_task(rowid):
 def get_tasks_as_string():
     """Returns a simple string list of pending tasks for the chatbot."""
     conn = sqlite3.connect(DB_PATH)
-    # Get only pending tasks
     df = pd.read_sql("SELECT task FROM tasks WHERE status='Pending'", conn)
     conn.close()
 

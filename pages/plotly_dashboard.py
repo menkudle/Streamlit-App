@@ -1,15 +1,11 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-import os
 from utils.auth import require_auth
 from utils.data_generator import ensure_data_exists
 
-st.set_page_config(layout="wide")
-
 # 1. Security & Config
 require_auth()
-
 
 # 2. Efficient Data Loading
 @st.cache_data(ttl=3600)  # Cache for 1 hour
@@ -104,6 +100,8 @@ def render_trend_section(data):
 
 
 render_trend_section(filtered_df)
+
+st.markdown("---")
 
 
 # --- FRAGMENT 3: Geographic & Scatter Analysis ---

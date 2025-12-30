@@ -43,7 +43,7 @@ tasks = st.Page("pages/task_manager.py", title="My Tasks", icon="✅")
 # --- NAVIGATION LOGIC ---
 if not st.session_state.logged_in:
     # SHOW ONLY LOGIN PAGE
-    # position="hidden" hides the sidebar entirely on the login screen (optional)
+    # position="hidden" hides the sidebar entirely on the login screen
     pg = st.navigation([login_page], position="hidden")
 else:
     # SHOW APP PAGES

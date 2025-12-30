@@ -1,6 +1,5 @@
 import streamlit as st
 import requests
-import json
 import re
 from utils.auth import require_auth
 from utils.db_manager import add_task, get_tasks_as_string
@@ -68,7 +67,6 @@ if prompt := st.chat_input("What can I do for you?"):
             if add_match:
                 task_content = add_match.group(1).strip()
                 add_task(task_content)
-                st.cache_data.clear()  # Clear cache so other pages update
 
                 final_msg = f"✅ Added task: **{task_content}**"
                 message_placeholder.markdown(final_msg)

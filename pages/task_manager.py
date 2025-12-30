@@ -2,8 +2,6 @@ import streamlit as st
 from utils.db_manager import init_db, add_task, get_tasks, delete_task
 from utils.auth import require_auth
 
-st.set_page_config(layout="wide")
-
 require_auth()
 
 # Initialize DB on first load
