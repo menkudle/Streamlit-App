@@ -25,7 +25,7 @@ The app simulates a real-world business portal featuring **secure authentication
 * **Raw Data View:** Toggleable dataframes for granular inspection.
 
 ### 🤖 3. Local AI Chat (Ollama Integration)
-* **Privacy-First AI:** Chat interface connected to a **locally running LLM** (Nemotron-Mini via Ollama).
+* **Privacy-First AI:** Chat interface connected to a **locally running LLM** (Llama3.2 via Ollama).
 * **Context Awareness:** The bot remembers conversation history within the session.
 * **Streaming UI:** Real-time feedback indicators ("Thinking...").
 
@@ -38,9 +38,9 @@ The app simulates a real-world business portal featuring **secure authentication
 
 ## 🛠️ Tech Stack
 * **Frontend:** [Streamlit](https://streamlit.io/)
-* **Data Processing:** Pandas, NumPy
+* **Data Processing:** Pandas, NumPy, Plotly
 * **Database:** SQLite3 (Native Python)
-* **AI Engine:** [Ollama](https://ollama.com/) (running `nemotron-mini`)
+* **AI Engine:** [Ollama](https://ollama.com/) (running `llama3.2`)
 * **Styling:** TOML Configuration (Custom Themes)
 
 ---
@@ -53,11 +53,13 @@ stream-app-mastery/
 ├── data/                   # Data Storage
 │   └── todo.db             # SQLite database (auto-generated)
 ├── pages/                  # Sub-pages
-│   ├── 1_Dashboard.py      # Analytics View
-│   ├── 2_AI_Chat.py        # LLM Interface
-│   └── 3_Task_Manager.py   # Todo List
+│   ├── basic_dashboard.py  # Analytics View
+│   ├── plotly_dashboard.py # Plotly Detailed View
+│   ├── ai_chatbot.py       # LLM Interface
+│   └── task_manager.py     # Todo List
 ├── utils/                  # Helper Modules
 │   ├── auth.py             # Authentication Logic
+│   ├── data_nenerator.py   # Generates CSV for Plotly Dashboard
 │   └── db_manager.py       # Database CRUD functions
 ├── app.py                  # Main Entry Point (Login)
 └── README.md               # Documentation
@@ -78,15 +80,21 @@ cd streamlit-app
 
 ### 3. Install Dependencies
 ```bash
-pip install streamlit pandas requests
+pip install streamlit pandas requests plotly
 ```
 
 ### 4. Setup Local LLM
 Pull the specific model used in the application code:
 ```bash
-ollama pull nemotron-mini
+ollama pull llama3.2
 ```
-Note: Keep the Ollama app running in the background.
+Run the Llama3.2 model locally:
+```bash
+ollama run llama3.2
+```
+
+Endpoint is available to access Local LLM:  ```http://localhost:11434/api/chat```
+
 
 ### 5. Run the Application
 ```bash
