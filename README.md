@@ -13,7 +13,7 @@ The app is "Cloud Ready" — it runs seamlessly on **Streamlit Community Cloud**
 
 [![Live Demo](https://img.shields.io/badge/Live_Demo-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://agentic-task-manager.streamlit.app/)
 
----
+
 
 ## ✨ Key Features
 
@@ -39,7 +39,6 @@ The app is "Cloud Ready" — it runs seamlessly on **Streamlit Community Cloud**
 * **Data Slicing:** Dynamic time-grain filtering (Daily/Weekly/Monthly) for trend analysis.
 * **Cross-Filtering:** Drill down into sales performance by region and category.
 
----
 
 ## 🛠️ Tech Stack
 * **Frontend:** [Streamlit](https://streamlit.io/)
@@ -48,7 +47,6 @@ The app is "Cloud Ready" — it runs seamlessly on **Streamlit Community Cloud**
 * **Local AI:** [Ollama](https://ollama.com/) (Running Llama 3.2 / Qwen 2.5)
 * **Visualization:** Plotly Express & Pandas
 
----
 
 ## 📂 Project Structure
 ```bash
@@ -69,7 +67,7 @@ stream-app-mastery/
 ├── requirements.txt        # Dependency List
 └── README.md               # Documentation
 ```
----
+
 
 ## ⚙ Setup
 
@@ -138,7 +136,6 @@ backgroundColor = "#0E1117"
 * Username: ```admin```
 * Password: ```password```
 
----
 
 ## 🚀 Future Roadmap
 * [x] Implement user authentication.
@@ -149,12 +146,9 @@ backgroundColor = "#0E1117"
 * [ ] Add PDF RAG (Retrieval Augmented Generation).
 * [ ] Multi-user support with Row Level Security.
 
----
-
 ## 🤝 Contributing
 Contributions, issues, and feature requests are welcome!
 
----
 
 ## 📄 License
 This project is licensed under the MIT License.
