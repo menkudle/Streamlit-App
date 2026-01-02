@@ -9,6 +9,26 @@ require_auth()
 
 st.title("🤖 Agentic Assistant")
 
+# 2. CONFIGURATION: Check for Cloud API Key
+# If found in secrets, use Groq. If not, default to Localhost (Ollama).
+if "GROQ_API_KEY" in st.secrets:
+    IS_CLOUD = True
+    API_KEY = st.secrets["GROQ_API_KEY"]
+    API_URL = "https://api.groq.com/openai/v1/chat/completions"
+    MODEL_NAME = "llama-3.3-70b-versatile" # Highly capable, fast model
+    HEADERS = {
+        "Authorization": f"Bearer {API_KEY}",
+        "Content-Type": "application/json"
+    }
+    st.caption("⚡ Powered by Groq Cloud API")
+else:
+    IS_CLOUD = False
+    API_URL = "http://localhost:11434/api/chat"
+    MODEL_NAME = "llama3.2"
+    HEADERS = {}
+    st.caption("🏠 Running Locally on Ollama")
+
+
 # 2. System Prompt
 SYSTEM_PROMPT = """
 You are a AI Assistant who can answer simple queries and also manage Tasks.
@@ -37,24 +57,33 @@ if prompt := st.chat_input("What can I do for you?"):
     with st.chat_message("user"):
         st.markdown(prompt)
 
+        # Prepare Messages for API
+        # We always insert the System Prompt at the start
+        api_messages = [{"role": "system", "content": SYSTEM_PROMPT}] + st.session_state.messages
+
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
         message_placeholder.markdown("🧠 Thinking...")
 
         try:
-            # Prepare messages for LLM
-            # We send the full history so it knows context
-            api_messages = [{"role": "system", "content": SYSTEM_PROMPT}] + st.session_state.messages
-
+            # 5. SEND REQUEST
             payload = {
-                "model": "llama3.2",
+                "model": MODEL_NAME,
                 "messages": api_messages,
-                "stream": False,
-                "temperature": 0.0
+                "temperature": 0.0,  # Keep it 0 for strict command adherence
+                "stream": False
             }
 
-            response = requests.post("http://localhost:11434/api/chat", json=payload)
-            response_text = response.json()['message']['content']
+            if IS_CLOUD:
+                # GROQ (OpenAI Format)
+                response = requests.post(API_URL, json=payload, headers=HEADERS)
+                response.raise_for_status()
+                response_text = response.json()['choices'][0]['message']['content']
+            else:
+                # OLLAMA (Local Format)
+                response = requests.post(API_URL, json=payload)
+                response.raise_for_status()
+                response_text = response.json()['message']['content']
 
             # --- AGENT LOGIC ---
 
