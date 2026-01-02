@@ -118,6 +118,8 @@ backgroundColor = "#0E1117"
 ## 🚀 Future Roadmap
 * [ ] Implement user registration with password hashing.
 * [ ] Add PDF RAG (Retrieval Augmented Generation) to the AI Chat.
+* [ ] Add Groq API integration
+* [ ] Add Supabase Integration
 * [ ] Deploy to Streamlit Community Cloud.
 
 ## 🤝 Contributing
