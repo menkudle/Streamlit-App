@@ -1,0 +1,5 @@
+streamlit
+pandas
+plotly
+requests
+# We don't need 'ollama' here because on cloud we use 'requests' to hit Groq
