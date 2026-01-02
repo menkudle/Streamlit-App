@@ -1,11 +1,8 @@
 import streamlit as st
-from utils.db_manager import init_db, add_task, get_tasks, delete_task
+from utils.db_manager import add_task, get_tasks, delete_task
 from utils.auth import require_auth
 
 require_auth()
-
-# Initialize DB on first load
-init_db()
 
 st.title("✅ Task Manager")
 
@@ -30,8 +27,8 @@ if not df.empty:
         with col1:
             st.write(f"• {row['task']}")
         with col2:
-            if st.button("Delete", key=row['rowid']):
-                delete_task(row['rowid'])
+            if st.button("Delete", key=row['id']):
+                delete_task(row['id'])
                 st.rerun()
 else:
     st.info("No tasks yet.")
